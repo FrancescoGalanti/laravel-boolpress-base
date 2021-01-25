@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -26,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -37,7 +40,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $request->validate($this->SetValidation());
+
+        $data['slug'] = Str::slug($data['title'], '-');
+
+        if(!empty($data['path_img'])){
+            $data['path_img'] = Storage::disk('public')->put();
+        }
+        
     }
 
     /**
@@ -83,5 +95,13 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function SetValidation(){
+        return [
+            'title' => 'required',
+            'body' => 'required',
+            'path_img' => 'image'
+        ];
     }
 }

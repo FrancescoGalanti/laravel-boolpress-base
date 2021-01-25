@@ -14,7 +14,13 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="{{route('about')}}">about</a>
+        <a class="nav-link" href="{{route('about')}}">About</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{route('posts.index')}}">Blog</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{route('posts.create')}}">New Post</a>
       </li>
     </ul>
   </div>
