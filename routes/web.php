@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'StaticHomeController@home')->name('homepage');
 Route::get('/about', 'StaticHomeController@about')->name('about');
+Route::resource('posts', 'PostController');
