@@ -70,7 +70,8 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $post = Post::where('slug', $slug);
+        $post = Post::where('slug', $slug)->first();
+        /* dd($post); */
 
         return view('posts.show', compact('post'));
     }
