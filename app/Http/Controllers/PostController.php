@@ -47,7 +47,17 @@ class PostController extends Controller
         $data['slug'] = Str::slug($data['title'], '-');
 
         if(!empty($data['path_img'])){
-            $data['path_img'] = Storage::disk('public')->put();
+            $data['path_img'] = Storage::disk('public')->put('images' , $data['path_img']);
+        }
+
+        $NewPost = new Post();
+        $NewPost->fill($data);
+        $saved = $NewPost->save();
+
+        if($saved){
+            return redirect()->route('posts.index');
+        }else{
+            return redirect()->route('homepage');
         }
         
     }

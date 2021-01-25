@@ -22,12 +22,12 @@
           <input id="title" class="form-control" type="text" name="title" value="{{old('title')}}">
        </div>
        <div class="form-group">
-          <label for="description"> Description</label>
-          <textarea id="description" class="form-control"  name="body">{{old('body')}}</textarea>
+          <label for="body"> Description</label>
+          <textarea id="description" class="form-control" id="body"  name="body">{{old('body')}}</textarea>
        </div>
        <div class="form-group">
           <label for="path_img">Post Img</label>
-          <input id="path_img" type="file" class="form-control"  name="path_img" accept="image/*">
+          <input id="path_img" type="file" class="form-control"  name="path_img" accept=" image/*">
        </div>
        <div class="form-group">
           <input class="btn btn-primary" type="submit" value="Create Post">
