@@ -19,6 +19,10 @@ class PostController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
 
+        if(! empty($post)){
+            abort(404);
+        }
+
         return view('posts.index', compact('posts'));
     }
 
@@ -28,7 +32,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
+
         return view('posts.create');
     }
 
@@ -72,6 +77,10 @@ class PostController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
         /* dd($post); */
+        if(empty($post)){
+            abort(404);
+        }
+       
 
         return view('posts.show', compact('post'));
     }
@@ -85,6 +94,8 @@ class PostController extends Controller
     public function edit($slug)
     {
         $post = Post::where('slug', $slug)->first();
+
+        
 
         return view('posts.edit' , compact('post'));
     }
