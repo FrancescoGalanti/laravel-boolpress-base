@@ -130,7 +130,18 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $title = $post->title;
+        $image = $post->path_img;
+        $deleted = $post->delete();
+
+        if($deleted){
+            if(!empty($image)){
+                Storage::disk('public')->delete();
+            }
+            return redirect()->route('posts.index')->with('post-deleted', $title);
+        }else{
+            return redirect()->route('homepage');
+        }
     }
 
     private function SetValidation(){
