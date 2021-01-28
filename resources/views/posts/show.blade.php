@@ -3,6 +3,8 @@
   <div class="container mb-5">
       <h1>{{$post->title}}</h1>
       <div>Last update:{{$post->updated_at->diffForHumans()}}</div>
+      @dump($post->infoPost->post_status)
+      <div>Post status: </div>
       <div class="actions mb-5 mt-2 ">
           <a class="btn btn-primary" href="{{route('posts.edit' , $post->slug)}}">Edit</a>
           <form class="d-inline " action="{{route('posts.destroy', $post->id)}}" method="POST">

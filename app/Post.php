@@ -18,4 +18,16 @@ class Post extends Model
         'slug',
         'path_img'
     ];
+
+
+    // posts - info_posts
+    public function infoPost(){
+        return $this->hasone('App\infoPost');
+    }
+
+    // posts - comments
+
+    public function comments(){
+        return $this->hasmany('App\Comment');
+    }
 }

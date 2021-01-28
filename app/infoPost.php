@@ -13,4 +13,10 @@ class infoPost extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    // info_posts - posts
+
+    public function post(){
+        return $this->belongsTo('App\Post');
+    }
 }
