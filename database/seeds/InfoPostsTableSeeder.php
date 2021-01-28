@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Post;
-use App\infoPost;
+use App\InfoPost;
 use Faker\Generator as Faker;
 
 class InfoPostsTableSeeder extends Seeder
@@ -17,7 +17,7 @@ class InfoPostsTableSeeder extends Seeder
         $posts = Post::all();
 
         foreach($posts as $post){
-          $newInfo = new infoPost();
+          $newInfo = new InfoPost();
 
           $newInfo->post_id = $post->id;
           $newInfo->post_status = $faker->randomElement(['public','private', 'draft']);

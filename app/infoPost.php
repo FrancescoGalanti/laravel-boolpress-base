@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class infoPost extends Model
+class InfoPost extends Model
 {
     /**
      * Indicates if the model should be timestamped.

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Post;
+
 
 class Post extends Model
 {
@@ -22,12 +22,12 @@ class Post extends Model
 
     // posts - info_posts
     public function infoPost(){
-        return $this->hasone('App\infoPost');
+        return $this->hasOne('App\InfoPost');
     }
 
     // posts - comments
 
     public function comments(){
-        return $this->hasmany('App\Comment');
+        return $this->hasMany('App\Comment');
     }
 }
