@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('path_img')->nullable();
             $table->timestamps();
         });
+        Schema::disableForeignKeyConstraints();
     }
 
     /**

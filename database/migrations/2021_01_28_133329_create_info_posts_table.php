@@ -22,6 +22,7 @@ class CreateInfoPostsTable extends Migration
 
             $table->foreign('post_id')->references('id')->on('posts');
         });
+        Schema::disableForeignKeyConstraints();
     }
 
     /**
@@ -32,5 +33,6 @@ class CreateInfoPostsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('info_posts');
+
     }
 }

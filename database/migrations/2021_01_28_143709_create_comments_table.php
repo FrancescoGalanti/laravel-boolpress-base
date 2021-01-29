@@ -21,6 +21,7 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
             $table->foreign('post_id')->references('id')->on('posts');
         });
+        Schema::disableForeignKeyConstraints();
     }
 
     /**

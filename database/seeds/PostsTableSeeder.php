@@ -15,7 +15,7 @@ class PostsTableSeeder extends Seeder
     public function run(Faker $faker)
     {   
 
-        Post::truncate();
+        
        /*  $data = [
             [
                 "title" => "Philip",
