@@ -130,8 +130,12 @@ class PostController extends Controller
         }
         
         $updated = $post->update($data);
+        $data['post_id'] = $post->id;
+        $info = InfoPost::where('post_id', $post->id)->first();
+        $infoUpdate = $info->update($data);
 
-        if ($updated) {
+
+        if ($updated && $infoUpdate) {
             return redirect()->route('posts.show', $post->slug);
         }else{
             return redirect()->route('homepage');
