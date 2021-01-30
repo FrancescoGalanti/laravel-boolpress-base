@@ -20,9 +20,9 @@ class CreateInfoPostsTable extends Migration
             $table->string('comment_status', 7);//open, closed, private
             $table->timestamps();
 
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
-        Schema::disableForeignKeyConstraints();
+        /* Schema::disableForeignKeyConstraints(); */
     }
 
     /**

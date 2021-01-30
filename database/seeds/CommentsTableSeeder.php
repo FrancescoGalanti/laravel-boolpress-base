@@ -17,7 +17,7 @@ class CommentsTableSeeder extends Seeder
         $posts = Post::all();
 
         foreach($posts as $post){
-            for ($i=0; $i < 3; $i++) { 
+            for ($i = 0; $i < 3; $i++) { 
                 $newComment = new Comment();
 
                 $newComment->post_id = $post->id;

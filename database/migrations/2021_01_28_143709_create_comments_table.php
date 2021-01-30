@@ -19,9 +19,9 @@ class CreateCommentsTable extends Migration
             $table->string('author', 50);
             $table->string('text');
             $table->timestamps();
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
-        Schema::disableForeignKeyConstraints();
+       /*  Schema::disableForeignKeyConstraints(); */
     }
 
     /**
