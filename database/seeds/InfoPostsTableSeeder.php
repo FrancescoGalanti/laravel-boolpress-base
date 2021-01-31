@@ -24,5 +24,7 @@ class InfoPostsTableSeeder extends Seeder
           $newInfo->comment_status = $faker->randomElement(['open','closed', 'private']);
           $newInfo->save();
         }
+
+        
     }
 }

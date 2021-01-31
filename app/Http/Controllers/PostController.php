@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Infopost;
+use App\Comment;
+use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+
 
 class PostController extends Controller
 {
@@ -34,8 +37,9 @@ class PostController extends Controller
      */
     public function create()
     {   
+        $tags = Tag::all();
 
-        return view('posts.create');
+        return view('posts.create', compact('tags'));
     }
 
     /**
@@ -66,6 +70,9 @@ class PostController extends Controller
         $infoSaved = $NewInfo->save();
 
         if($saved && $infoSaved ){
+            if(! empty($data['tags'])){
+              $NewPost->tags()->attach($data['tags']);
+            }
             return redirect()->route('posts.index');
         }else{
             return redirect()->route('homepage');
@@ -86,6 +93,12 @@ class PostController extends Controller
         if(empty($post)){
             abort(404);
         }
+
+        
+
+        
+
+        
        
 
         return view('posts.show', compact('post'));
@@ -100,10 +113,14 @@ class PostController extends Controller
     public function edit($slug)
     {
         $post = Post::where('slug', $slug)->first();
-
+        $tags = Tag::all();
+        
+        if(empty($post)){
+            abort(404);
+        }
         
 
-        return view('posts.edit' , compact('post'));
+        return view('posts.edit' , compact('post', 'tags'));
     }
 
     /**

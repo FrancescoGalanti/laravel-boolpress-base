@@ -14,6 +14,14 @@
           <input class="btn btn-danger" type="submit" value="Delete">
           </form>
       </div>
+      <div class="tags">
+            <h4>TAGS</h4>
+            @forelse ($post->tags as $tag)
+            <span class="badge badge-dark">{{ $tag->name }}</span>
+            @empty
+                <h5>No actual tag for this post.</h5>
+            @endforelse
+      </div>
       @if(!empty($post->path_img))
          <img src="{{asset('storage/' . $post->path_img)}}" alt="{{$post->title}}">
       @else 

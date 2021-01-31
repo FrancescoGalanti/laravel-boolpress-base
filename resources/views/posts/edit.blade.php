@@ -35,6 +35,7 @@
           @endisset
           <input id="path_img" type="file" class="form-control"  name="path_img" accept=" image/*">
        </div>
+      
        <div class="form-group">
           <label for="post_status">Post Status</label>
           <select name="post_status" id="post_status">
@@ -54,6 +55,16 @@
              <option value="private"  {{ old('comment_status', $post->infoPost->comment_status) == 'private' ? 'selected' : '' }}>Private</option>
              <option value="closed"  {{ old('comment_status' , $post->infoPost->comment_status) == 'closed' ? 'selected' : '' }}>Closed</option>
           </select>
+       </div>
+       <div class="form-group">
+                @foreach ($tags as $tag)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="tags[]" id="tag-{{ $tag->id }}" value="{{ $tag->id }}"
+                        @if($post->tags->contains($tag->id)) checked  @endif
+                        >
+                        <label class="form-check-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                    </div>
+                @endforeach
        </div>
        <div class="form-group">
           <input class="btn btn-primary" type="submit" value="Update Post">

@@ -52,6 +52,14 @@
           </select>
        </div>
        <div class="form-group">
+                @foreach ($tags as $tag)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="tags[]" id="tag-{{ $tag->id }}" value="{{ $tag->id }}">
+                        <label class="form-check-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                    </div>
+                @endforeach
+       </div>
+       <div class="form-group">
           <input class="btn btn-primary" type="submit" value="Create Post">
        </div>
 @endsection
