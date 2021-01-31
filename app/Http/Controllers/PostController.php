@@ -153,6 +153,11 @@ class PostController extends Controller
 
 
         if ($updated && $infoUpdate) {
+            if(! empty($data['tags'])){
+             $post->tags()->sync($data['tags']);
+            }else{
+                $post->tags()->detach();
+            }
             return redirect()->route('posts.show', $post->slug);
         }else{
             return redirect()->route('homepage');
@@ -170,6 +175,7 @@ class PostController extends Controller
     {
         $title = $post->title;
         $image = $post->path_img;
+        $post->tags()->detach();
         $deleted = $post->delete();
 
         if($deleted){
